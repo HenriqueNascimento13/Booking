@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Booking.Models.servicosHotel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("criar novo", "Create")
+</p>
+
+<div id="pesquisa">
+    @using (Html.BeginForm("Index", "Serviços do Hotel", FormMethod.Post))
+    {
+        <input type="text" placeholder="Insira o serviço a procurar" name="texto" />
+        <input type="submit" name="Procurar" value="Procurar" />
+
+    }
+
+
+</div>
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+       
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </td>
+           
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IDServicos }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IDServicos  }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IDServicos })
+            </td>
+        </tr>
+    }
+
+</table>
